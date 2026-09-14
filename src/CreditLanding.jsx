@@ -31,12 +31,14 @@ export function CreditLanding() {
   return <main className="wallet-landing credit-landing">
     <section className="product-hero section wallet-hero">
       <a className="product-back" href="/#soluciones">← Todas las soluciones</a>
+      <div className="illustrated-hero-grid"><div>
       <p className="eyebrow">Créditos digitales</p>
       <h1>Conecte todo el <span>ciclo del crédito</span></h1>
       <p className="product-description">{lines(0)[0]}</p>
       <p className="wallet-intro">{lines(0)[1]}</p>
       <p className="credit-hero-claim">{lines(0)[2]}</p>
       <a className="button" href="/#contacto">Agendar un diagnóstico</a>
+      </div><img className="product-art" src="/assets/credit-illustration.png" width="1536" height="1024" alt="Ilustración de los módulos conectados del ciclo de crédito" fetchPriority="high" /></div>
     </section>
 
     <section className="section">

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { usePointerMotion } from "./usePointerMotion";
 import { WalletLanding } from "./WalletLanding";
 import { PaymentsLanding } from "./PaymentsLanding";
 import { CreditLanding } from "./CreditLanding";
@@ -87,16 +88,13 @@ function Header() {
 
 function Hero() {
   return <section className="hero" id="inicio">
-    <div className="hero-visual" aria-hidden="true"><img src="/assets/action-fintech-hero.png" alt="" /></div>
+    <div className="hero-visual" aria-hidden="true"><video src="/assets/hero_vide02-stable.mp4" autoPlay loop muted playsInline /></div>
     <div className="hero-copy reveal" style={{ width: '100%', maxWidth: '800px' }}>
       <p className="eyebrow">Tecnología financiera modular</p>
       <h1 style={{ textWrap: 'balance', wordBreak: 'break-word' }}>Construimos la <span style={{ display: 'inline' }}>infraestructura financiera que</span> su negocio necesita.</h1>
       <p className="hero-claim">La tecnología se adapta a su negocio.<br />No al revés.</p>
       <div className="actions"><a className="button" href="/#contacto">Agendar un diagnóstico</a><a className="button button--outline" href="/#soluciones">Conocer nuestras soluciones</a></div>
     </div>
-    <div className="hero-module-label hero-label-one">APIs <small>OPEN &amp; SECURE</small></div>
-    <div className="hero-module-label hero-label-two">PAYMENTS <small>REAL-TIME</small></div>
-    <div className="hero-module-label hero-label-three">LENDING <small>&amp; CREDIT</small></div>
   </section>;
 }
 
@@ -150,5 +148,5 @@ function Contact() {
 
 function Footer(){return <footer><Logo/><p>Infraestructura financiera modular para operaciones reales.</p><nav aria-label="Navegación del pie"><a href="/#soluciones">Soluciones</a><a href="/#plataforma">Plataforma</a><a href="/#integraciones">Integraciones</a><a href="/#recursos">Recursos</a><a href="/#nosotros">Nosotros</a><a href="/#contacto">Contacto</a><a href="/#privacidad">Privacidad</a><a href="/#terminos">Términos</a></nav><small>© 2026 Action Fintech. Todos los derechos reservados.</small></footer>}
 
-export function App(){const product = products[window.location.pathname.replace(/\/$/, "")]; useEffect(()=>{const observer=new IntersectionObserver(entries=>entries.forEach(e=>e.isIntersecting&&e.target.classList.add("is-visible")),{threshold:.12});document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));return()=>observer.disconnect()},[]);if(product) return <ProductLanding product={product}/>; return <><Header/><main><Hero/><Solutions/><Ecosystem/><Architecture/><Integrations/><MatureModules/><Experience/><WhyUs/><Contact/></main><Footer/></>}
+export function App(){usePointerMotion();const product = products[window.location.pathname.replace(/\/$/, "")]; useEffect(()=>{const observer=new IntersectionObserver(entries=>entries.forEach(e=>e.isIntersecting&&e.target.classList.add("is-visible")),{threshold:.12});document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));return()=>observer.disconnect()},[]);if(product) return <ProductLanding product={product}/>; return <><Header/><main><Hero/><Solutions/><Ecosystem/><Architecture/><Integrations/><MatureModules/><Experience/><WhyUs/><Contact/></main><Footer/></>}
 

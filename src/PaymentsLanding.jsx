@@ -17,11 +17,13 @@ export function PaymentsLanding() {
   return <main className="wallet-landing payments-landing">
     <section className="product-hero section wallet-hero">
       <a className="product-back" href="/#soluciones">← Todas las soluciones</a>
+      <div className="illustrated-hero-grid"><div>
       <p className="eyebrow">Pagos cross-border</p>
       <h1>Conecte su operación de <span>pagos internacionales</span></h1>
       <p className="product-description">{lines(0)[0]}</p>
       <p className="wallet-intro">{lines(0)[1]}</p>
       <a className="button" href="/#contacto">Agendar un diagnóstico</a>
+      </div><img className="product-art" src="/assets/payments-illustration.png" width="1536" height="1024" alt="Ilustración de una red de pagos que conecta América Latina y China" fetchPriority="high" /></div>
     </section>
 
     <section className="section">

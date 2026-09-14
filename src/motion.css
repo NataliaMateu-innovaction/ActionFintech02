@@ -1,0 +1,31 @@
+/* Keep the video frame fixed; movement comes from the video itself. */
+.hero-visual video { animation: none; transform: none; }
+
+/* Pointer effects only enhance devices with a mouse and motion enabled. */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .pointer-surface {
+    transition: transform 300ms ease, box-shadow 300ms ease, background-color 300ms ease;
+    transform: perspective(1100px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+  }
+  .pointer-surface.pointer-active {
+    transform: perspective(1100px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateY(-5px);
+    box-shadow: 0 20px 42px -24px rgba(35, 65, 225, .35);
+  }
+  .solution.pointer-active, .credit-cycle li.pointer-active, .payments-management article.pointer-active {
+    background: radial-gradient(320px circle at var(--light-x, 50%) var(--light-y, 50%), rgba(35, 65, 225, .09), transparent 80%);
+  }
+  .orbit-node.pointer-active { border-color: var(--blue); }
+  .product-art.pointer-active { box-shadow: 0 32px 65px -20px rgba(35, 65, 225, .25); }
+  .module-index > div, .wallet-capabilities li, .wallet-audiences li {
+    transition: background-color 250ms ease, color 250ms ease;
+  }
+  .module-index > div:hover, .wallet-capabilities li:hover, .wallet-audiences li:hover {
+    background-color: rgba(35, 65, 225, .045);
+    color: var(--blue);
+  }
+  .button { transition: transform 220ms ease, box-shadow 220ms ease, background-color 220ms ease; }
+  .button:active { transform: translateY(0) scale(.98); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}

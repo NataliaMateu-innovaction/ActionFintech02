@@ -13,11 +13,13 @@ export function WalletLanding() {
   return <main className="wallet-landing">
     <section className="product-hero section wallet-hero">
       <a className="product-back" href="/#soluciones">← Todas las soluciones</a>
+      <div className="illustrated-hero-grid"><div>
       <p className="eyebrow">Wallet digital</p>
       <h1>Convierta su ecosistema en una <span>experiencia financiera propia</span></h1>
       <p className="product-description"><strong>Desarrollamos e integramos wallets digitales adaptadas a su modelo de negocio</strong>, conectando pagos, transferencias, cuentas, proveedores financieros y activos digitales desde una infraestructura modular.</p>
       <p className="wallet-intro">Para empresas, Fintechs y entidades que buscan incorporar servicios financieros a su operación sin depender de una solución cerrada.</p>
       <a className="button" href="/#contacto">Agendar un diagnóstico</a>
+      </div><img className="product-art" src="/assets/wallet-illustration.png" width="1536" height="1024" alt="Ilustración de una wallet digital con tarjeta y módulos conectados" fetchPriority="high" /></div>
     </section>
 
     <section className="section wallet-split">

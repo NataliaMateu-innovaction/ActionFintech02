@@ -1,5 +1,13 @@
 # Prototype Instructions
 
+Do not show floating APIs, Payments, or Lending labels over the main hero video; keep the video clear of those overlays.
+
+Keep the main hero video frame stationary: no CSS zoom, float, or translation on the video. The user noticed vibration and wants a stable frame while the video plays.
+
+Use subtle mouse-responsive depth and lighting on product images/cards to avoid a flat appearance. Keep text readable and navigation stable; enable pointer motion only for fine pointers with hover, and disable animation when reduced motion is requested.
+
+Product landings should include purpose-made imagery to break up text. The user prioritizes visual quality and prefers waiting for generation availability over reusing the home hero as a makeshift substitute. Use the dedicated wallet, payments, and credit illustrations in public/assets with their full composition preserved and responsive placement beside/below hero copy.
+
 Run the local server yourself and open the preview in the browser available to this environment. Do not give the user server-start instructions when you can run it.
 
 Before making substantial visual changes, use the Product Design plugin's `get-context` skill when the visual source is unclear or no longer matches the current goal. When the user gives durable prototype-specific design feedback, preferences, or decisions, record them in `AGENTS.md`.
