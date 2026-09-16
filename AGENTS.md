@@ -17,6 +17,10 @@ When implementing from a selected generated mock, treat that image as the source
 Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts/prepare-sites-build.mjs`, and `tests/sites-worker.test.mjs` intact so the same local prototype can be handed to Sites. Before a Sites handoff, run `npm run build` and `npm run test:sites`; the build must leave `dist/client/index.html`, `dist/server/index.js`, and `dist/.openai/hosting.json`.
 
 ## Product navigation
+On desktop, keep the home contact copy/details column and CRM form visually equal in height. Use a compact headline and spacing, with social links aligned near the form bottom; stack naturally on mobile.
+Official Instagram: https://www.instagram.com/actionfintech/. Show a fixed, always-visible WhatsApp icon linking to https://wa.me/5491178268352 on home and every product landing, including mobile.
+Keep home contact details (phone, email, LinkedIn and WhatsApp) beneath the contact headline and supporting copy in the left column beside the CRM form, rather than in a separate full-width row, to keep the page compact.
+
 Each product in the solutions section (Wallet digital, Pagos cross-border, Créditos digitales) must have a button linking to its own dedicated landing page. Preserve the site's current visual style across these pages.
 
 ## Wallet landing content

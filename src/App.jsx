@@ -1,8 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { usePointerMotion } from "./usePointerMotion";
 import { WalletLanding } from "./WalletLanding";
 import { PaymentsLanding } from "./PaymentsLanding";
 import { CreditLanding } from "./CreditLanding";
+import { BlogLanding } from "./BlogLanding";
+import { BlogPost } from "./BlogPost";
+import { Terms } from "./Terms";
 
 const modules = ["Core", "Onboarding", "Scoring", "Wallet", "Payments", "CRM", "Reporting", "Fiat + Crypto"];
 const reasons = [
@@ -80,6 +83,8 @@ function Header() {
         <a href="/#integraciones" onClick={() => setOpen(false)}>Integraciones</a>
         <a href="/#recursos" onClick={() => setOpen(false)}>Recursos</a>
         <a href="/#nosotros" onClick={() => setOpen(false)}>Nosotros</a>
+        <a href="/blog" onClick={() => setOpen(false)}>Blog</a>
+        <a href="/#contacto" onClick={() => setOpen(false)}>Contacto</a>
       </nav>
       <a className="button header-cta" href="/#contacto">Agendar un diagnóstico</a>
     </header>
@@ -133,7 +138,73 @@ function MatureModules() {
 }
 
 function Experience() {
-  return <section className="experience section" id="nosotros"><div className="section-heading reveal"><p className="eyebrow">Experiencia</p><h2>Tecnología desarrollada<br />para operaciones reales.</h2></div><div className="experience-grid reveal"><div className="experience-statement"><p>Diseñamos, integramos y acompañamos infraestructura financiera para contextos donde la continuidad, la trazabilidad y la evolución importan.</p></div><div className="future-proof"><small>ESPACIO PREPARADO PARA</small><span>Clientes</span><span>Casos</span><span>Métricas verificadas</span><p>La evidencia se incorpora cuando está validada.</p></div></div></section>;
+  const scrollRef = useRef(null);
+
+  const scroll = (direction) => {
+    if (scrollRef.current) {
+      const scrollAmount = 364; // width (340) + gap (24)
+      scrollRef.current.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
+    }
+  };
+
+  const clients = [
+    {
+      name: "Nación Bursatil",
+      logo: "/assets/logos/case-logo-1.png",
+      url: "https://nacionbursatil.com.ar/",
+      description: "Manejo estratégico de la página web, optimización de procesos mediante automatización e incorporación de inteligencia artificial para potenciar la eficiencia operativa."
+    },
+    {
+      name: "CrediExpress",
+      logo: "/assets/logos/case-logo-2.png",
+      url: "https://crediexpress.com.ar/",
+      description: "Onboarding digital optimizado, integración del motor de reglas y sistemas de Crediexpress, vinculación con los lenders y monitoreo integral del ciclo del préstamo."
+    },
+    {
+      name: "Zenziya",
+      logo: "/assets/logos/case-logo-3.png",
+      url: "https://zenziya.com/",
+      description: "Servicio de instalación y configuración de MIFOS, adaptado al entorno operativo del cliente."
+    },
+    {
+      name: "Templaris",
+      logo: "/assets/logos/case-logo-4.png",
+      url: "https://templaris.com/",
+      description: "Implementación de MIFOS y ejecución del proceso de migración desde sistemas legacy hacia la plataforma MIFOS, asegurando continuidad y consistencia."
+    }
+  ];
+
+  return (
+    <section className="experience section" id="nosotros">
+      <div className="section-heading reveal">
+        <p className="eyebrow">Experiencia</p>
+        <h2>Tecnología desarrollada<br />para operaciones reales.</h2>
+      </div>
+      <div className="experience-header reveal">
+        <div className="experience-statement">
+          <p>Diseñamos, integramos y acompañamos infraestructura financiera para contextos donde la continuidad, la trazabilidad y la evolución importan. Hemos logrado más de 30 clientes satisfechos, transformando la forma en que bancos, fintechs y empresas financieras ofrecen servicios digitales.</p>
+        </div>
+        <div className="carousel-controls">
+          <button onClick={() => scroll('left')} aria-label="Anterior">←</button>
+          <button onClick={() => scroll('right')} aria-label="Siguiente">→</button>
+        </div>
+      </div>
+      <div className="clients-carousel reveal" ref={scrollRef}>
+        {clients.map(client => (
+          <article className="client-card" key={client.name}>
+            <div className="client-logo-wrapper">
+              <img src={client.logo} alt={client.name} />
+            </div>
+            <div className="client-info">
+              <h3>{client.name}</h3>
+              <p>{client.description}</p>
+              <a href={client.url} target="_blank" rel="noreferrer" className="client-link">Conocer caso →</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
 }
 
 function WhyUs() {
@@ -141,12 +212,127 @@ function WhyUs() {
 }
 
 function Contact() {
-  const [status,setStatus]=useState(""); const [errors,setErrors]=useState({});
-  const submit=(event)=>{event.preventDefault();const data=new FormData(event.currentTarget);const next={};["nombre","email","empresa","necesidad"].forEach(k=>{if(!String(data.get(k)||"").trim())next[k]="Completá este campo."});if(data.get("email")&&!/^\S+@\S+\.\S+$/.test(data.get("email")))next.email="Ingresá un email corporativo válido.";setErrors(next);if(!Object.keys(next).length){setStatus("Gracias. Recibimos tu consulta y coordinaremos el diagnóstico.");event.currentTarget.reset();}};
-  return <section className="contact section" id="contacto"><div className="contact-copy reveal"><p className="eyebrow">Próximo paso</p><h2>Su negocio no debería adaptarse a las limitaciones de su software.</h2><p>Construyamos una infraestructura financiera que pueda evolucionar con él.</p></div><form className="contact-form reveal" onSubmit={submit} noValidate><label>Nombre<input name="nombre" aria-invalid={!!errors.nombre}/>{errors.nombre&&<span>{errors.nombre}</span>}</label><label>Email corporativo<input name="email" type="email" aria-invalid={!!errors.email}/>{errors.email&&<span>{errors.email}</span>}</label><label>Empresa<input name="empresa" aria-invalid={!!errors.empresa}/>{errors.empresa&&<span>{errors.empresa}</span>}</label><label>¿Qué necesita construir?<textarea name="necesidad" rows="3" aria-invalid={!!errors.necesidad}></textarea>{errors.necesidad&&<span>{errors.necesidad}</span>}</label><button className="button" type="submit">Agendar un diagnóstico</button>{status&&<p className="form-success" role="status">{status}</p>}</form></section>;
+  useEffect(() => {
+    const scriptId = "leadconnector-form-embed";
+    if (document.getElementById(scriptId)) return;
+
+    const script = document.createElement("script");
+    script.id = scriptId;
+    script.src = "https://link.msgsndr.com/js/form_embed.js";
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
+
+  return <section className="contact section" id="contacto">
+    <div className="contact-copy reveal"><p className="eyebrow">Contacto</p><h2>Su negocio no debería adaptarse a las limitaciones de su software.</h2><p className="contact-description">Construyamos una infraestructura financiera que pueda evolucionar con él.</p><ContactDetails/></div>
+    <div className="contact-form contact-form--crm reveal"><iframe src="https://api.leadconnectorhq.com/widget/form/ks3XvcUDjQkggdVqgiT5" id="inline-ks3XvcUDjQkggdVqgiT5" data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-trigger-value="" data-activation-type="alwaysActivated" data-activation-value="" data-deactivation-type="neverDeactivate" data-deactivation-value="" data-form-name="Form Contacto Web Action Fintech" data-height="468" data-layout-iframe-id="inline-ks3XvcUDjQkggdVqgiT5" data-form-id="ks3XvcUDjQkggdVqgiT5" title="Form Contacto Web Action Fintech" /></div>
+  </section>;
 }
 
-function Footer(){return <footer><Logo/><p>Infraestructura financiera modular para operaciones reales.</p><nav aria-label="Navegación del pie"><a href="/#soluciones">Soluciones</a><a href="/#plataforma">Plataforma</a><a href="/#integraciones">Integraciones</a><a href="/#recursos">Recursos</a><a href="/#nosotros">Nosotros</a><a href="/#contacto">Contacto</a><a href="/#privacidad">Privacidad</a><a href="/#terminos">Términos</a></nav><small>© 2026 Action Fintech. Todos los derechos reservados.</small></footer>}
+function ContactDetails() {
+  return <div className="contact-details" aria-label="Datos de contacto">
+      <article><p className="eyebrow">Teléfono</p><a href="tel:+541178268352">+54 11 7826-8352</a><span>Atención comercial</span></article>
+      <article><p className="eyebrow">Email</p><a href="mailto:ventas@actionfintech.com">ventas@actionfintech.com</a><span>Consultas y proyectos</span></article>
+      <article><p className="eyebrow">Redes sociales</p><div className="contact-socials"><a href="https://www.linkedin.com/company/actionfintech/" target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a><a href="https://www.instagram.com/actionfintech/" target="_blank" rel="noreferrer">Instagram <span aria-hidden="true">↗</span></a><a href="https://wa.me/5491178268352" target="_blank" rel="noreferrer">WhatsApp <span aria-hidden="true">↗</span></a></div></article>
+    </div>;
+}
 
-export function App(){usePointerMotion();const product = products[window.location.pathname.replace(/\/$/, "")]; useEffect(()=>{const observer=new IntersectionObserver(entries=>entries.forEach(e=>e.isIntersecting&&e.target.classList.add("is-visible")),{threshold:.12});document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));return()=>observer.disconnect()},[]);if(product) return <ProductLanding product={product}/>; return <><Header/><main><Hero/><Solutions/><Ecosystem/><Architecture/><Integrations/><MatureModules/><Experience/><WhyUs/><Contact/></main><Footer/></>}
+function Footer() {
+  return (
+    <footer className="site-footer">
+      <div className="footer-grid">
+        <div className="footer-brand">
+          <Logo />
+          <p>Infraestructura financiera modular para operaciones reales.</p>
+          <div className="footer-group">
+            <span>Empresas del Grupo</span>
+            <div className="footer-group-logos">
+              <img src="/assets/innovactionGroup.png" alt="Innovaction Group" />
+              <img src="/assets/LogoDappsFactory.png" alt="Dapps Factory" />
+            </div>
+          </div>
+        </div>
+        <div className="footer-nav">
+          <h3>Soluciones</h3>
+          <a href="/soluciones/wallet-digital">Wallet digital</a>
+          <a href="/soluciones/pagos">Pagos cross-border</a>
+          <a href="/soluciones/creditos-digitales">Créditos digitales</a>
+        </div>
+        <div className="footer-nav">
+          <h3>Compañía</h3>
+          <a href="/#plataforma">Plataforma</a>
+          <a href="/#integraciones">Integraciones</a>
+          <a href="/#nosotros">Nosotros</a>
+          <a href="/blog">Blog</a>
+          <a href="/#contacto">Contacto</a>
+        </div>
+        <div className="footer-nav">
+          <h3>Conectar</h3>
+          <a href="https://www.linkedin.com/company/actionfintech/" target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+          <a href="https://www.instagram.com/actionfintech/" target="_blank" rel="noreferrer">Instagram <span aria-hidden="true">↗</span></a>
+          <a href="https://wa.me/5491178268352" target="_blank" rel="noreferrer">WhatsApp <span aria-hidden="true">↗</span></a>
+          <a href="mailto:ventas@actionfintech.com">Email <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div className="footer-bottom">
+        <small>© 2026 Action Fintech. Todos los derechos reservados.</small>
+        <div className="footer-legal">
+          <a href="/terminos#politica-de-privacidad">Privacidad</a>
+          <a href="/terminos">Términos</a>
+        </div>
+      </div>
+    </footer>
+  );
+}
 
+function ScrollToTopButton() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const toggleVisibility = () => {
+      // Mostrar cuando baja 400px
+      if (window.scrollY > 400) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  };
+
+  if (!isVisible) return null;
+
+  return (
+    <button 
+      onClick={scrollToTop} 
+      className="scroll-to-top"
+      aria-label="Volver arriba"
+    >
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 19V5M5 12l7-7 7 7"/>
+      </svg>
+    </button>
+  );
+}
+
+export function App(){
+  usePointerMotion();
+  const path = window.location.pathname.replace(/\/$/, "");
+  const product = products[path]; 
+  useEffect(()=>{const observer=new IntersectionObserver(entries=>entries.forEach(e=>e.isIntersecting&&e.target.classList.add("is-visible")),{threshold:.12});document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));return()=>observer.disconnect()},[]);
+  
+  if(product) return <ProductLanding product={product}/>; 
+  if(path === "/blog") return <><Header/><BlogLanding/><Footer/></>;
+  if(path.startsWith("/blog/")) return <><Header/><BlogPost blogId={path.split("/blog/")[1]}/><Footer/></>;
+  if(path === "/terminos") return <><Header/><Terms/><Footer/><ScrollToTopButton/></>;
+  
+  return <><Header/><main><Hero/><Solutions/><Ecosystem/><Architecture/><Integrations/><MatureModules/><Experience/><WhyUs/><Contact/></main><Footer/><ScrollToTopButton/></>
+}
