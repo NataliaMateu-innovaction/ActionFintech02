@@ -6,6 +6,7 @@ import { CreditLanding } from "./CreditLanding";
 import { BlogLanding } from "./BlogLanding";
 import { BlogPost } from "./BlogPost";
 import { Terms } from "./Terms";
+import { LinksLanding } from "./LinksLanding";
 
 const modules = ["Core", "Onboarding", "Scoring", "Wallet", "Payments", "CRM", "Reporting", "Fiat + Crypto"];
 const reasons = [
@@ -330,6 +331,7 @@ export function App(){
   useEffect(()=>{const observer=new IntersectionObserver(entries=>entries.forEach(e=>e.isIntersecting&&e.target.classList.add("is-visible")),{threshold:.12});document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));return()=>observer.disconnect()},[]);
   
   if(product) return <ProductLanding product={product}/>; 
+  if(path === "/links") return <LinksLanding/>;
   if(path === "/blog") return <><Header/><BlogLanding/><Footer/></>;
   if(path.startsWith("/blog/")) return <><Header/><BlogPost blogId={path.split("/blog/")[1]}/><Footer/></>;
   if(path === "/terminos") return <><Header/><Terms/><Footer/><ScrollToTopButton/></>;
