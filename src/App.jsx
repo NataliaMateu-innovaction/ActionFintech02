@@ -181,6 +181,11 @@ function Experience() {
       logo: "/assets/logos/case-logo-4.png",
       url: "https://templaris.com/",
       description: "Implementación de MIFOS y ejecución del proceso de migración desde sistemas legacy hacia la plataforma MIFOS, asegurando continuidad y consistencia."
+    },
+    {
+      name: "Bloom",
+      logo: "/assets/logos/logo-bloom.png",
+      description: "Pagos internacionales a China desde México. Fondeá en pesos mexicanos, convertí a dólares y pagá proveedores en China con trazabilidad, control operativo y seguimiento en tiempo real."
     }
   ];
 
@@ -208,7 +213,7 @@ function Experience() {
             <div className="client-info">
               <h3>{client.name}</h3>
               <p>{client.description}</p>
-              <a href={client.url} target="_blank" rel="noreferrer" className="client-link">Conocer caso →</a>
+              {client.url && <a href={client.url} target="_blank" rel="noreferrer" className="client-link">Conocer caso →</a>}
             </div>
           </article>
         ))}
