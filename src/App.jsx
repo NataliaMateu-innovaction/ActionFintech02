@@ -105,7 +105,7 @@ function Hero() {
     <div className="hero-visual" aria-hidden="true"><video src="/assets/hero_vide02-stable.mp4" autoPlay loop muted playsInline /></div>
     <div className="hero-copy reveal">
       <p className="eyebrow">Tecnología financiera modular</p>
-      <h1>Construimos la <span>infraestructura financiera que</span> su negocio necesita.</h1>
+      <h1>Construimos <span>la infraestructura financiera que</span> su negocio<br />necesita.</h1>
       <p className="hero-claim">La tecnología se adapta a su negocio.<br />No al revés.</p>
       <div className="actions"><a className="button" href="/#contacto">Agendar un diagnóstico</a><a className="button button--outline" href="/#soluciones">Conocer nuestras soluciones</a></div>
     </div>
