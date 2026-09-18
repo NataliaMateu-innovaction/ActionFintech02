@@ -31,3 +31,19 @@ The Pagos cross-border landing uses the user's full supplied Spanish copy, store
 
 ## Credit landing content
 The Créditos digitales landing uses the complete Spanish copy supplied by the user, stored in src/credit-content.json. Preserve all eight credit lifecycle stages, onboarding, scoring example, core, disbursements, collection, CRM, automation and AI, reporting, modular architecture, verticals and experience. CTAs: Agendar un diagnóstico and Analizar mi operación de crédito; both link to the existing contact section.
+
+## Crypto bulk payments landing
+The fourth home solution is `Pagos Masivos en Cripto`. Keep its home card concise: multiple digital-asset transfers, automated and at scale. Its dedicated landing expands the user-supplied positioning: high-speed enterprise infrastructure for large transaction volumes, centralized payment management, automated blockchain execution, fewer manual processes, and use cases including users, suppliers, partners and fund distribution. CTA: `Quiero conocer la solución`, linked to the existing contact section.
+
+## Innovaction Group landing
+Build the parent-company website in a separate `innovactionGroup/` directory within this project, as requested by the user. The confirmed public brand name is `Innovaction Group`. The final domain is `innovaction.com.ar`; the user identified `https://innovaction.com.ar/index.html` as the final website location. Do not use `innovactiongroup.com.ar`. These name and domain decisions were confirmed on 2026-09-17. Other marketing details remain pending confirmation.
+The user confirmed the founding dates: Innovaction in 2002, Action Fintech in 2016, and DAppsFactory in 2020. International experience means clients and projects developed in Latin America and the United States; it does not establish offices or a physical presence there. Approved factual wording: `Clientes y proyectos en Latinoamérica y Estados Unidos`.
+The latest user clarification supersedes the earlier business-unit wording: publicly present Action Fintech and DappsFactory as `empresas de Innovaction Group`, retaining their own identities. They are the commercial and visual protagonists. Present the group, its history, and these companies first.
+Innovaction directly offers three complementary capabilities: custom AI development adapted to business processes, MuleSoft integrations (systems, applications, APIs and data), and dedicated technology teams. Describe these briefly; AI is not a third company or unit. Do not create separate service landings.
+Audience: medium and large companies, financial institutions, and organizations modernizing infrastructure, integrating systems, or automating operations. Attribute any case, membership, association, or accreditation to the correct group company; publish only confirmed evidence.
+General Innovaction Group commercial phone: +54 11-7079-2777 (`tel:+541170792777`). Use this general contact for routing inquiries. Use the current group logo prominently alongside the two company logos and links to their websites. Commercial presentation files have not yet been provided; do not invent links. Do not infer WhatsApp availability from this phone number.
+
+Use the user-supplied innovactionGroup/logo_dark-original.svg for the DappsFactory logo on the dark company panel. Keep its wrapper transparent, without a white box.
+
+Use the user-supplied `innovactionGroup/public/assets/video_hero.mp4` as the Innovaction Group hero video. Keep the video frame stationary and use `innovaction-hero.png` as its poster/fallback. Use the original company imagery `action-fintech-hero.png` and `dapss-hero.jpg` in the Action Fintech and DappsFactory company panels.
+

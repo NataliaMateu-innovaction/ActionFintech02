@@ -3,6 +3,7 @@ import { usePointerMotion } from "./usePointerMotion";
 import { WalletLanding } from "./WalletLanding";
 import { PaymentsLanding } from "./PaymentsLanding";
 import { CreditLanding } from "./CreditLanding";
+import { CryptoBulkPaymentsLanding } from "./CryptoBulkPaymentsLanding";
 import { BlogLanding } from "./BlogLanding";
 import { BlogPost } from "./BlogPost";
 import { Terms } from "./Terms";
@@ -36,6 +37,12 @@ const products = {
     description: "Integre originación, evaluación y gestión de créditos en una arquitectura que acompaña las reglas y los procesos de su negocio.",
     features: [["Originación digital", "Organice solicitudes y documentación en un flujo conectado con su operación."], ["Scoring y evaluación", "Integre fuentes de información y criterios de evaluación según su modelo de crédito."], ["Gestión y cobranza", "Conecte el seguimiento de la cartera, los pagos y los procesos de cobranza."]],
     modules: "Onboarding · Scoring · Core · Collections · Reporting"
+  },
+  "/soluciones/pagos-masivos-cripto": {
+    name: "Pagos Masivos en Cripto", title: "Pagos en cripto, inmediatos y a escala.",
+    description: "Ejecute múltiples transferencias de activos digitales desde una infraestructura centralizada, rápida y automatizada.",
+    features: [],
+    modules: "Digital Assets · Blockchain · Payments · Automation · APIs"
   }
 };
 
@@ -44,6 +51,7 @@ function ProductLanding({ product }) {
   if (product.name === "Wallet digital") return <><Header/><WalletLanding/><Footer/></>;
   if (product.name === "Pagos cross-border") return <><Header/><PaymentsLanding/><Footer/></>;
   if (product.name === "Créditos digitales") return <><Header/><CreditLanding/><Footer/></>;
+  if (product.name === "Pagos Masivos en Cripto") return <><Header/><CryptoBulkPaymentsLanding/><Footer/></>;
   return <><Header/><main>
     <section className="product-hero section">
       <a className="product-back" href="/#soluciones">← Todas las soluciones</a>
@@ -95,9 +103,9 @@ function Header() {
 function Hero() {
   return <section className="hero" id="inicio">
     <div className="hero-visual" aria-hidden="true"><video src="/assets/hero_vide02-stable.mp4" autoPlay loop muted playsInline /></div>
-    <div className="hero-copy reveal" style={{ width: '100%', maxWidth: '800px' }}>
+    <div className="hero-copy reveal">
       <p className="eyebrow">Tecnología financiera modular</p>
-      <h1 style={{ textWrap: 'balance', overflowWrap: 'break-word' }}>Construimos la <span style={{ display: 'inline' }}>infraestructura financiera que</span> su negocio necesita.</h1>
+      <h1>Construimos la <span>infraestructura financiera que</span> su negocio necesita.</h1>
       <p className="hero-claim">La tecnología se adapta a su negocio.<br />No al revés.</p>
       <div className="actions"><a className="button" href="/#contacto">Agendar un diagnóstico</a><a className="button button--outline" href="/#soluciones">Conocer nuestras soluciones</a></div>
     </div>
@@ -111,7 +119,8 @@ function Solutions() {
       <article className="solution solution--featured"><span className="index">01</span><h3>Wallet<br />digital</h3><p>Cuentas digitales, custodia segura y experiencia omnicanal.</p><a className="button button--outline" href="/soluciones/wallet-digital">Conocer Wallet digital <span aria-hidden="true"> →</span></a></article>
       <article className="solution"><span className="index">02</span><h3>Pagos<br />cross-border</h3><p>Pagos internacionales en tiempo real con trazabilidad y cumplimiento.</p><a className="button button--outline" href="/soluciones/pagos">Conocer Pagos <span aria-hidden="true"> →</span></a></article>
       <article className="solution"><span className="index">03</span><h3>Créditos<br />digitales</h3><p>Originación, scoring y gestión de créditos 100% digitales.</p><a className="button button--outline" href="/soluciones/creditos-digitales">Conocer Créditos digitales <span aria-hidden="true"> →</span></a></article>
-      <div className="flow-line" aria-hidden="true"><i></i><i></i><i></i></div>
+      <article className="solution"><span className="index">04</span><h3>Pagos masivos<br />en cripto</h3><p>Múltiples transferencias de activos digitales, automatizadas y a escala.</p><a className="button button--outline" href="/soluciones/pagos-masivos-cripto">Conocer solución <span aria-hidden="true"> →</span></a></article>
+      <div className="flow-line" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
     </div>
   </section>;
 }
@@ -258,6 +267,7 @@ function Footer() {
           <a href="/soluciones/wallet-digital">Wallet digital</a>
           <a href="/soluciones/pagos">Pagos cross-border</a>
           <a href="/soluciones/creditos-digitales">Créditos digitales</a>
+          <a href="/soluciones/pagos-masivos-cripto">Pagos masivos en cripto</a>
         </div>
         <div className="footer-nav">
           <h3>Compañía</h3>
