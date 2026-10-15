@@ -4,9 +4,13 @@ Do not show floating APIs, Payments, or Lending labels over the main hero video;
 
 Keep the main hero video frame stationary: no CSS zoom, float, or translation on the video. The user noticed vibration and wants a stable frame while the video plays.
 
+Use SVG icon components for directional arrows and action icons across both Action Fintech and Innovaction Group. Do not use Unicode arrow characters in visible UI; iOS can render them with inconsistent generic or emoji styling.
+
 Use subtle mouse-responsive depth and lighting on product images/cards to avoid a flat appearance. Keep text readable and navigation stable; enable pointer motion only for fine pointers with hover, and disable animation when reduced motion is requested.
 
 Product landings should include purpose-made imagery to break up text. The user prioritizes visual quality and prefers waiting for generation availability over reusing the home hero as a makeshift substitute. Use the dedicated wallet, payments, and credit illustrations in public/assets with their full composition preserved and responsive placement beside/below hero copy.
+
+The four product landing heroes (Wallet digital, Pagos cross-border, Créditos digitales, Pagos Masivos en Cripto) use 12-second looping motion videos instead of the static illustrations, approved by the user on 2026-10-15. They render through `src/HeroVideo.jsx` from `public/assets/{wallet,payments,credit,crypto-bulk-payments}-hero.webm`, `.mp4` and `-poster.jpg`; like the home hero video, the frame stays stationary (no pointer tilt), and with reduced motion it stays on the poster. Keep the illustrations in public/assets for social previews. The source 3D scenes live outside this repo in `E:\quimera\ActionFintech\hero-wallet-video` (three.js rendered to video); edit and re-render there rather than editing the videos. The production server is IIS: `public/web.config` must keep MIME types for `.webm` and `.mp4`.
 
 Run the local server yourself and open the preview in the browser available to this environment. Do not give the user server-start instructions when you can run it.
 
@@ -22,6 +26,7 @@ Official Instagram: https://www.instagram.com/actionfintech/. Show a fixed, alwa
 Keep home contact details (phone, email, LinkedIn and WhatsApp) beneath the contact headline and supporting copy in the left column beside the CRM form, rather than in a separate full-width row, to keep the page compact.
 
 Each product in the solutions section (Wallet digital, Pagos cross-border, Créditos digitales) must have a button linking to its own dedicated landing page. Preserve the site's current visual style across these pages.
+Shared links must render a branded social preview instead of appearing plain. Keep Open Graph and Twitter image URLs pointed at real public assets. The Créditos Digitales route has route-specific build metadata using its dedicated illustration, title, description, and canonical URL; preserve that behavior for WhatsApp and other link preview crawlers.
 
 ## Wallet landing content
 The Wallet digital landing uses the complete Spanish copy supplied by the user on 2026-09-14, including all 16 integration capabilities, fiat + crypto, regional markets, the four-layer architecture, four implementation stages, target audiences, and closing positioning. Primary CTA: Agendar un diagnóstico. Closing CTA: Hablemos de su proyecto. Both link to the existing contact section. Preserve qualifiers about providers and market-specific availability.
@@ -30,7 +35,8 @@ The Wallet digital landing uses the complete Spanish copy supplied by the user o
 The Pagos cross-border landing uses the user's full supplied Spanish copy, stored in src/payments-content.json, with a LATAM-China focus. Preserve all 16 integrations, provider and regulatory conditions, and the distinction that Action Fintech supplies technology and is not a bank, exchange house, or remittance provider. CTAs: Agendar un diagnóstico and Analizar mi operación cross-border, linked to the existing contact section.
 
 ## Credit landing content
-The Créditos digitales landing uses the complete Spanish copy supplied by the user, stored in src/credit-content.json. Preserve all eight credit lifecycle stages, onboarding, scoring example, core, disbursements, collection, CRM, automation and AI, reporting, modular architecture, verticals and experience. CTAs: Agendar un diagnóstico and Analizar mi operación de crédito; both link to the existing contact section.
+The Créditos digitales landing uses the replacement Spanish copy supplied by the user on 2026-09-24, stored in src/credit-content.json. This version fully supersedes the previous long-form landing; do not restore its separate onboarding, scoring, disbursement, collection, CRM, reporting, verticals, or experience sections. Lead with `Digitalice toda su operación de crédito`, explain the fragmented-operation problem, present Mifos X / Apache Fineract as the core, show the connected end-to-end credit cycle, automation and AI, the surrounding ecosystem, and the closing value proposition. Use the supplied Mifos logo from `public/assets/logos/mifos-logo-flat.png`. Hero CTA: `Analizar mi operación de crédito`. Closing CTA: `Agendar un diagnóstico`. Both link to the existing contact section.
+Give Mifos strong visual prominence on this landing: retain the Mifos/Fineract credential in the hero, the large branded panel in the core section, and the Mifos mark inside the highlighted core step of the connected credit cycle.
 
 ## Crypto bulk payments landing
 The fourth home solution is `Pagos Masivos en Cripto`. Keep its home card concise: multiple digital-asset transfers, automated and at scale. Its dedicated landing expands the user-supplied positioning: high-speed enterprise infrastructure for large transaction volumes, centralized payment management, automated blockchain execution, fewer manual processes, and use cases including users, suppliers, partners and fund distribution. CTA: `Quiero conocer la solución`, linked to the existing contact section.
@@ -42,8 +48,9 @@ The latest user clarification supersedes the earlier business-unit wording: publ
 Innovaction directly offers three complementary capabilities: custom AI development adapted to business processes, MuleSoft integrations (systems, applications, APIs and data), and dedicated technology teams. Describe these briefly; AI is not a third company or unit. Do not create separate service landings.
 Audience: medium and large companies, financial institutions, and organizations modernizing infrastructure, integrating systems, or automating operations. Attribute any case, membership, association, or accreditation to the correct group company; publish only confirmed evidence.
 General Innovaction Group commercial phone: +54 11-7079-2777 (`tel:+541170792777`). Use this general contact for routing inquiries. Use the current group logo prominently alongside the two company logos and links to their websites. Commercial presentation files have not yet been provided; do not invent links. Do not infer WhatsApp availability from this phone number.
+Keep linked Action Fintech and DappsFactory logos in the Innovaction Group footer. Use the public destinations `https://actionfintech.com/` and `https://dappsfactory.io/`, opening both safely in a new tab.
 
-Use the user-supplied innovactionGroup/logo_dark-original.svg for the DappsFactory logo on the dark company panel. Keep its wrapper transparent, without a white box.
+Use the user-supplied `innovactionGroup/public/assets/LogoDappsFactory.png` for the DappsFactory logo, including the dark company panel. The earlier SVG contained live font text and changed typeface on iOS, so it is superseded. On the dark panel, render the transparent PNG as a white monochrome mark via CSS and keep its wrapper transparent, without a white box.
 
 Use the user-supplied `innovactionGroup/public/assets/video_hero.mp4` as the Innovaction Group hero video. Keep the video frame stationary and use `innovaction-hero.png` as its poster/fallback. Use the original company imagery `action-fintech-hero.png` and `dapss-hero.jpg` in the Action Fintech and DappsFactory company panels.
 

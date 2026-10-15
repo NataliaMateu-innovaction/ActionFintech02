@@ -12,14 +12,14 @@ const steps = ["Analizamos la operación actual", "Definimos la arquitectura nec
 export function WalletLanding() {
   return <main className="wallet-landing">
     <section className="product-hero section wallet-hero">
-      <a className="product-back" href="/#soluciones">← Todas las soluciones</a>
+      <a className="product-back" href="/#soluciones"><ArrowLeft aria-hidden="true" /> Todas las soluciones</a>
       <div className="illustrated-hero-grid"><div>
       <p className="eyebrow">Wallet digital</p>
       <h1>Convierta su ecosistema en una <span>experiencia financiera propia</span></h1>
       <p className="product-description"><strong>Desarrollamos e integramos wallets digitales adaptadas a su modelo de negocio</strong>, conectando pagos, transferencias, cuentas, proveedores financieros y activos digitales desde una infraestructura modular.</p>
       <p className="wallet-intro">Para empresas, Fintechs y entidades que buscan incorporar servicios financieros a su operación sin depender de una solución cerrada.</p>
       <a className="button" href="/#contacto">Agendar un diagnóstico</a>
-      </div><img className="product-art" src="/assets/wallet-illustration.png" width="1536" height="1024" alt="Ilustración de una wallet digital con tarjeta y módulos conectados" fetchPriority="high" /></div>
+      </div><HeroVideo name="wallet-hero" label="Animación de una wallet digital conectada a cuentas, cripto, KYC y tarjetas, que se abre en capas: app, módulos, APIs y proveedores" /></div>
     </section>
 
     <section className="section wallet-split">
@@ -45,7 +45,7 @@ export function WalletLanding() {
 
     <section className="section wallet-architecture">
       <div className="section-heading"><h2>La integración es parte del producto</h2><p className="product-description">La verdadera complejidad de una wallet está detrás de la interfaz.</p></div>
-      <ol className="wallet-layers" aria-label="Arquitectura de la wallet, de la interfaz a los proveedores">{layers.map((layer, i) => <li key={layer}><span className="wallet-layer-number" aria-hidden="true">0{i + 1}</span><strong>{layer}</strong>{i < layers.length - 1 && <span className="wallet-layer-arrow" aria-hidden="true">↓</span>}</li>)}</ol>
+      <ol className="wallet-layers" aria-label="Arquitectura de la wallet, de la interfaz a los proveedores">{layers.map((layer, i) => <li key={layer}><span className="wallet-layer-number" aria-hidden="true">0{i + 1}</span><strong>{layer}</strong>{i < layers.length - 1 && <span className="wallet-layer-arrow" aria-hidden="true"><ArrowDown /></span>}</li>)}</ol>
       <p className="product-description">Action Fintech desarrolla y orquesta esa infraestructura para que los distintos componentes funcionen como un único ecosistema.</p>
     </section>
 
@@ -76,3 +76,5 @@ export function WalletLanding() {
     </section>
   </main>;
 }
+import { ArrowDown, ArrowLeft } from "lucide-react";
+import { HeroVideo } from "./HeroVideo";

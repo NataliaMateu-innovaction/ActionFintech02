@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OG Image Builder</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 1200px;
+            height: 630px;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+            display: flex;
+            position: relative;
+        }
+
+        .left {
+            width: 55%;
+            height: 100%;
+            padding: 80px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+            background: linear-gradient(90deg, #ffffff 70%, rgba(255,255,255,0.8) 85%, transparent 100%);
+        }
+
+        .right-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('/assets/action-fintech-hero.png');
+            background-size: 120%;
+            background-position: right -150px center;
+            z-index: 1;
+        }
+
+        .logo {
+            width: 280px;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 56px;
+            line-height: 1.1;
+            font-weight: 700;
+            color: #0b1a30; 
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: 26px;
+            color: #3b4256;
+            line-height: 1.4;
+            font-weight: 400;
+        }
+
+        .footer {
+            margin-top: 40px;
+            font-size: 22px;
+            color: #0052cc;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="right-bg"></div>
+    <div class="left">
+        <!-- We use absolute paths to ensure the browser loads them when running locally -->
+        <img class="logo" src="/assets/action-fintech-logo.png" alt="Action Fintech Logo">
+        
+        <div class="content">
+            <h1>Core Bancario<br>y Soluciones<br>Fintech</h1>
+            <p class="subtitle">Infraestructura financiera modular preparada para operar.</p>
+        </div>
+        
+        <div class="footer">
+            actionfintech.com
+        </div>
+    </div>
+</body>
+</html>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ArrowRight } from "lucide-react";
 
 export function BlogLanding() {
   const [blogs, setBlogs] = useState([]);
@@ -76,7 +77,7 @@ export function BlogLanding() {
                       <p className="blog-meta"><time dateTime={blog.created_at}>{date}</time> <span>|</span> Action Fintech</p>
                       <h3><a href={`/blog/${blog.id}`}>{blog.title}</a></h3>
                       <p className="blog-headline">{blog.headline}</p>
-                      <a href={`/blog/${blog.id}`} className="blog-read-more">Leer Más <span aria-hidden="true">→</span></a>
+                      <a href={`/blog/${blog.id}`} className="blog-read-more" style={{display: 'inline-flex', alignItems: 'center', gap: '4px'}}>Leer Más <ArrowRight size={16} strokeWidth={2.5} /></a>
                     </div>
                   </article>
                 );

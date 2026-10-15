@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import { ArrowUpRight, ArrowRight, ArrowLeft } from "lucide-react";
 import { usePointerMotion } from "./usePointerMotion";
 import { WalletLanding } from "./WalletLanding";
 import { PaymentsLanding } from "./PaymentsLanding";
@@ -8,6 +9,7 @@ import { BlogLanding } from "./BlogLanding";
 import { BlogPost } from "./BlogPost";
 import { Terms } from "./Terms";
 import { LinksLanding } from "./LinksLanding";
+import { GraciasLanding } from "./GraciasLanding";
 
 const modules = ["Core", "Onboarding", "Scoring", "Wallet", "Payments", "CRM", "Reporting", "Fiat + Crypto"];
 const reasons = [
@@ -54,7 +56,7 @@ function ProductLanding({ product }) {
   if (product.name === "Pagos Masivos en Cripto") return <><Header/><CryptoBulkPaymentsLanding/><Footer/></>;
   return <><Header/><main>
     <section className="product-hero section">
-      <a className="product-back" href="/#soluciones">← Todas las soluciones</a>
+      <a className="product-back" href="/#soluciones"><ArrowLeft aria-hidden="true" /> Todas las soluciones</a>
       <p className="eyebrow">{product.name}</p>
       <h1>{product.title}</h1>
       <p className="product-description">{product.description}</p>
@@ -116,10 +118,10 @@ function Solutions() {
   return <section className="solutions section" id="soluciones">
     <div className="section-heading reveal"><p className="eyebrow">Soluciones</p><h2>Infraestructura financiera<br />para operar y crecer<span className="blue-dot">.</span></h2></div>
     <div className="solution-flow reveal">
-      <article className="solution solution--featured"><span className="index">01</span><h3>Wallet<br />digital</h3><p>Cuentas digitales, custodia segura y experiencia omnicanal.</p><a className="button button--outline" href="/soluciones/wallet-digital">Conocer Wallet digital <span aria-hidden="true"> →</span></a></article>
-      <article className="solution"><span className="index">02</span><h3>Pagos<br />cross-border</h3><p>Pagos internacionales en tiempo real con trazabilidad y cumplimiento.</p><a className="button button--outline" href="/soluciones/pagos">Conocer Pagos <span aria-hidden="true"> →</span></a></article>
-      <article className="solution"><span className="index">03</span><h3>Créditos<br />digitales</h3><p>Originación, scoring y gestión de créditos 100% digitales.</p><a className="button button--outline" href="/soluciones/creditos-digitales">Conocer Créditos digitales <span aria-hidden="true"> →</span></a></article>
-      <article className="solution"><span className="index">04</span><h3>Pagos masivos<br />en cripto</h3><p>Múltiples transferencias de activos digitales, automatizadas y a escala.</p><a className="button button--outline" href="/soluciones/pagos-masivos-cripto">Conocer solución <span aria-hidden="true"> →</span></a></article>
+      <article className="solution solution--featured"><span className="index">01</span><h3>Wallet<br />digital</h3><p>Cuentas digitales, custodia segura y experiencia omnicanal.</p><a className="button button--outline" href="/soluciones/wallet-digital">Conocer Wallet digital <span aria-hidden="true" style={{marginLeft:'4px', display:'inline-flex', verticalAlign:'middle'}}><ArrowRight size={16} strokeWidth={2.5} /></span></a></article>
+      <article className="solution"><span className="index">02</span><h3>Pagos<br />cross-border</h3><p>Pagos internacionales en tiempo real con trazabilidad y cumplimiento.</p><a className="button button--outline" href="/soluciones/pagos">Conocer Pagos <span aria-hidden="true" style={{marginLeft:'4px', display:'inline-flex', verticalAlign:'middle'}}><ArrowRight size={16} strokeWidth={2.5} /></span></a></article>
+      <article className="solution"><span className="index">03</span><h3>Créditos<br />digitales</h3><p>Originación, scoring y gestión de créditos 100% digitales.</p><a className="button button--outline" href="/soluciones/creditos-digitales">Conocer Créditos digitales <span aria-hidden="true" style={{marginLeft:'4px', display:'inline-flex', verticalAlign:'middle'}}><ArrowRight size={16} strokeWidth={2.5} /></span></a></article>
+      <article className="solution"><span className="index">04</span><h3>Pagos masivos<br />en cripto</h3><p>Múltiples transferencias de activos digitales, automatizadas y a escala.</p><a className="button button--outline" href="/soluciones/pagos-masivos-cripto">Conocer solución <span aria-hidden="true" style={{marginLeft:'4px', display:'inline-flex', verticalAlign:'middle'}}><ArrowRight size={16} strokeWidth={2.5} /></span></a></article>
       <div className="flow-line" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
     </div>
   </section>;
@@ -200,8 +202,8 @@ function Experience() {
           <p>Diseñamos, integramos y acompañamos infraestructura financiera para contextos donde la continuidad, la trazabilidad y la evolución importan. Hemos logrado más de 30 clientes satisfechos, transformando la forma en que bancos, fintechs y empresas financieras ofrecen servicios digitales.</p>
         </div>
         <div className="carousel-controls">
-          <button onClick={() => scroll('left')} aria-label="Anterior">←</button>
-          <button onClick={() => scroll('right')} aria-label="Siguiente">→</button>
+          <button onClick={() => scroll('left')} aria-label="Anterior"><ArrowLeft size={20} strokeWidth={2.5} /></button>
+          <button onClick={() => scroll('right')} aria-label="Siguiente"><ArrowRight size={20} strokeWidth={2.5} /></button>
         </div>
       </div>
       <div className="clients-carousel reveal" ref={scrollRef}>
@@ -213,7 +215,7 @@ function Experience() {
             <div className="client-info">
               <h3>{client.name}</h3>
               <p>{client.description}</p>
-              {client.url && <a href={client.url} target="_blank" rel="noreferrer" className="client-link">Conocer caso →</a>}
+              {client.url && <a href={client.url} target="_blank" rel="noreferrer" className="client-link" style={{display: 'inline-flex', alignItems: 'center', gap: '4px'}}>Conocer caso <ArrowRight size={16} strokeWidth={2.5} /></a>}
             </div>
           </article>
         ))}
@@ -248,7 +250,7 @@ function ContactDetails() {
   return <div className="contact-details" aria-label="Datos de contacto">
       <article><p className="eyebrow">Teléfono</p><a href="tel:+541178268352">+54 11 7826-8352</a><span>Atención comercial</span></article>
       <article><p className="eyebrow">Email</p><a href="mailto:ventas@actionfintech.com">ventas@actionfintech.com</a><span>Consultas y proyectos</span></article>
-      <article><p className="eyebrow">Redes sociales</p><div className="contact-socials"><a href="https://www.linkedin.com/company/actionfintech/" target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a><a href="https://www.instagram.com/actionfintech/" target="_blank" rel="noreferrer">Instagram <span aria-hidden="true">↗</span></a><a href="https://wa.me/5491178268352" target="_blank" rel="noreferrer">WhatsApp <span aria-hidden="true">↗</span></a></div></article>
+      <article><p className="eyebrow">Redes sociales</p><div className="contact-socials"><a href="https://www.linkedin.com/company/actionfintech/" target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true"><ArrowUpRight size={16} strokeWidth={2.5} /></span></a><a href="https://www.instagram.com/actionfintech/" target="_blank" rel="noreferrer">Instagram <span aria-hidden="true"><ArrowUpRight size={16} strokeWidth={2.5} /></span></a><a href="https://wa.me/5491178268352" target="_blank" rel="noreferrer">WhatsApp <span aria-hidden="true"><ArrowUpRight size={16} strokeWidth={2.5} /></span></a></div></article>
     </div>;
 }
 
@@ -262,8 +264,12 @@ function Footer() {
           <div className="footer-group">
             <span>Empresas del Grupo</span>
             <div className="footer-group-logos">
-              <img src="/assets/innovactionGroup.png" alt="Innovaction Group" />
-              <img src="/assets/LogoDappsFactory.png" alt="Dapps Factory" />
+              <a href="https://innovaction.com.ar/" target="_blank" rel="noopener noreferrer" aria-label="Visitar el sitio de Innovaction Group">
+                <img src="/assets/innovactionGroup.png" alt="Innovaction Group" />
+              </a>
+              <a href="https://dappsfactory.io/" target="_blank" rel="noopener noreferrer" aria-label="Visitar el sitio de DappsFactory">
+                <img src="/assets/LogoDappsFactory.png" alt="DappsFactory" />
+              </a>
             </div>
           </div>
         </div>
@@ -284,10 +290,10 @@ function Footer() {
         </div>
         <div className="footer-nav">
           <h3>Conectar</h3>
-          <a href="https://www.linkedin.com/company/actionfintech/" target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
-          <a href="https://www.instagram.com/actionfintech/" target="_blank" rel="noreferrer">Instagram <span aria-hidden="true">↗</span></a>
-          <a href="https://wa.me/5491178268352" target="_blank" rel="noreferrer">WhatsApp <span aria-hidden="true">↗</span></a>
-          <a href="mailto:ventas@actionfintech.com">Email <span aria-hidden="true">↗</span></a>
+          <a href="https://www.linkedin.com/company/actionfintech/" target="_blank" rel="noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>LinkedIn <span aria-hidden="true"><ArrowUpRight size={14} strokeWidth={2.5} /></span></a>
+          <a href="https://www.instagram.com/actionfintech/" target="_blank" rel="noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>Instagram <span aria-hidden="true"><ArrowUpRight size={14} strokeWidth={2.5} /></span></a>
+          <a href="https://wa.me/5491178268352" target="_blank" rel="noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>WhatsApp <span aria-hidden="true"><ArrowUpRight size={14} strokeWidth={2.5} /></span></a>
+          <a href="mailto:ventas@actionfintech.com" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>Email <span aria-hidden="true"><ArrowUpRight size={14} strokeWidth={2.5} /></span></a>
         </div>
       </div>
       <div className="footer-bottom">
@@ -347,6 +353,7 @@ export function App(){
   
   if(product) return <ProductLanding product={product}/>; 
   if(path === "/links") return <LinksLanding/>;
+  if(path === "/gracias") return <><Header/><GraciasLanding/><Footer/></>;
   if(path === "/blog") return <><Header/><BlogLanding/><Footer/></>;
   if(path.startsWith("/blog/")) return <><Header/><BlogPost blogId={path.split("/blog/")[1]}/><Footer/></>;
   if(path === "/terminos") return <><Header/><Terms/><Footer/><ScrollToTopButton/></>;

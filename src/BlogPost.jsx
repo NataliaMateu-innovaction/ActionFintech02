@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { marked } from "marked";
+import { ArrowLeft } from "lucide-react";
 
 export function BlogPost({ blogId }) {
   const [post, setPost] = useState(null);
@@ -41,7 +42,7 @@ export function BlogPost({ blogId }) {
     <main className="blog-post-page">
       <section className="blog-post-hero">
         <div className="blog-post-header">
-          <a className="product-back" href="/blog">← Volver al blog</a>
+          <a className="product-back" href="/blog"><ArrowLeft aria-hidden="true" /> Volver al blog</a>
           <p className="blog-meta">{date} <span>|</span> Action Fintech</p>
           <h1>{post.title}</h1>
         </div>

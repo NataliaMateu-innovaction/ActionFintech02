@@ -1,4 +1,6 @@
 import content from "./payments-content.json";
+import { ArrowDown, ArrowLeft } from "lucide-react";
+import { HeroVideo } from "./HeroVideo";
 
 const lines = (index) => content[index].split(/\r?\n/).map(line => line.trim()).filter(Boolean);
 function Paragraphs({ items }) {
@@ -16,18 +18,18 @@ export function PaymentsLanding() {
   const closing = lines(11);
   return <main className="wallet-landing payments-landing">
     <section className="product-hero section wallet-hero">
-      <a className="product-back" href="/#soluciones">← Todas las soluciones</a>
+      <a className="product-back" href="/#soluciones"><ArrowLeft aria-hidden="true" /> Todas las soluciones</a>
       <div className="illustrated-hero-grid"><div>
       <p className="eyebrow">Pagos cross-border</p>
       <h1>Conecte su operación de <span>pagos internacionales</span></h1>
       <p className="product-description">{lines(0)[0]}</p>
       <p className="wallet-intro">{lines(0)[1]}</p>
       <a className="button" href="/#contacto">Agendar un diagnóstico</a>
-      </div><img className="product-art" src="/assets/payments-illustration.png" width="1536" height="1024" alt="Ilustración de una red de pagos que conecta América Latina y China" fetchPriority="high" /></div>
+      </div><HeroVideo name="payments-hero" label="Animación de un pago que sale de América Latina, pasa por bancos, FX, PSP y stablecoins, llega a China y se sigue hasta su conciliación" /></div>
     </section>
 
     <section className="section">
-      <div className="wallet-split"><Heading label="LATAM → China">Sus pagos, en una operación conectada</Heading><Paragraphs items={lines(1).slice(0, -1)}/></div>
+      <div className="wallet-split"><Heading label="LATAM — China">Sus pagos, en una operación conectada</Heading><Paragraphs items={lines(1).slice(0, -1)}/></div>
       <p className="payments-statement">{lines(1).at(-1)}</p>
     </section>
 
@@ -40,7 +42,7 @@ export function PaymentsLanding() {
     <section className="section wallet-architecture">
       <Heading label="Orquestación financiera">Múltiples proveedores. Una infraestructura.</Heading>
       <div className="payments-intro"><Paragraphs items={architecture.slice(0, 2)}/></div>
-      <ol className="wallet-layers" aria-label="Arquitectura de pagos internacionales">{architecture.slice(2, -1).filter(text => text !== "↓").map((text, i, layers) => <li key={text}><span className="wallet-layer-number" aria-hidden="true">0{i + 1}</span><strong>{text}</strong>{i < layers.length - 1 && <span className="wallet-layer-arrow" aria-hidden="true">↓</span>}</li>)}</ol>
+      <ol className="wallet-layers" aria-label="Arquitectura de pagos internacionales">{architecture.slice(2, -1).map((text, i, layers) => <li key={text}><span className="wallet-layer-number" aria-hidden="true">0{i + 1}</span><strong>{text}</strong>{i < layers.length - 1 && <span className="wallet-layer-arrow" aria-hidden="true"><ArrowDown /></span>}</li>)}</ol>
       <p className="product-description">{architecture.at(-1)}</p>
     </section>
 

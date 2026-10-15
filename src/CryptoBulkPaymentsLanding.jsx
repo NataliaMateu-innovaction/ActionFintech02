@@ -19,13 +19,13 @@ export function CryptoBulkPaymentsLanding() {
 
   return <main className="wallet-landing crypto-payments-landing">
     <section className="product-hero section wallet-hero">
-      <a className="product-back" href="/#soluciones">← Todas las soluciones</a>
+      <a className="product-back" href="/#soluciones"><ArrowLeft aria-hidden="true" /> Todas las soluciones</a>
       <div className="illustrated-hero-grid"><div>
         <p className="eyebrow">Pagos Masivos en Cripto</p>
         <h1>Envíe múltiples pagos en cripto <span>de forma inmediata y a escala.</span></h1>
         <p className="product-description">Infraestructura de alta velocidad para empresas que necesitan ejecutar grandes volúmenes de transferencias de activos digitales.</p>
         <a className="button" href="/#contacto">Quiero conocer la solución</a>
-      </div><img className="product-art" src="/assets/crypto-bulk-payments-illustration.png" width="1536" height="1024" alt="Ilustración de una infraestructura central que distribuye múltiples pagos digitales" fetchPriority="high" /></div>
+      </div><HeroVideo name="crypto-bulk-payments-hero" label="Animación de un lote de pagos que entra a una infraestructura central y se distribuye en transferencias de activos digitales a múltiples destinos" /></div>
     </section>
 
     <section className="section">
@@ -65,3 +65,5 @@ export function CryptoBulkPaymentsLanding() {
     </section>
   </main>;
 }
+import { ArrowLeft } from "lucide-react";
+import { HeroVideo } from "./HeroVideo";
