@@ -10,6 +10,7 @@ import { BlogPost } from "./BlogPost";
 import { Terms } from "./Terms";
 import { LinksLanding } from "./LinksLanding";
 import { GraciasLanding } from "./GraciasLanding";
+import { OrbitSystem } from "./OrbitSystem";
 
 const modules = ["Core", "Onboarding", "Scoring", "Wallet", "Payments", "CRM", "Reporting", "Fiat + Crypto"];
 const reasons = [
@@ -131,7 +132,7 @@ function Ecosystem() {
   const items = ["Wallet", "Payments", "Lending", "Core", "Onboarding", "CRM", "Compliance", "APIs"];
   return <section className="ecosystem section" id="plataforma">
     <div className="split-heading reveal"><h2>Una infraestructura.<br /><span>Múltiples posibilidades.</span></h2><p>No vendemos una suite cerrada. Diseñamos una arquitectura que se adapta a la operación, las integraciones y la evolución de cada negocio.</p></div>
-    <div className="orbit-system reveal" aria-label="Sistema modular conectado"><div className="orbit-core"><strong>Action</strong><span>financial infrastructure</span></div>{items.map((item, i) => <div key={item} className={`orbit-node node-${i + 1}`}><span>{String(i + 1).padStart(2, "0")}</span>{item}</div>)}</div>
+    <OrbitSystem items={items} />
   </section>;
 }
 
